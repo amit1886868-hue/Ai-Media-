@@ -1,103 +1,18 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ai Media - ElevenLabs Hindi AI</title>
-    <style>
-        :root { --accent: #00ff88; --card-bg: #1e293b; --bg: #0f172a; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; display: flex; justify-content: center; padding: 20px; }
-        .container { width: 100%; max-width: 500px; background: var(--card-bg); padding: 25px; border-radius: 24px; text-align: center; border: 1px solid #334155; }
-        h1 { color: var(--accent); margin-bottom: 5px; }
-        textarea { width: 100%; height: 120px; background: #0f172a; border: 1px solid #334155; border-radius: 12px; color: white; padding: 15px; box-sizing: border-box; margin: 15px 0; font-size: 16px; }
-        .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-        .voice-card { background: #334155; padding: 15px; border-radius: 12px; cursor: pointer; border: 2px solid transparent; transition: 0.3s; }
-        .voice-card.active { border-color: var(--accent); background: #1e293b; transform: scale(1.05); }
-        .btn-main { background: var(--accent); color: black; width: 100%; padding: 15px; border-radius: 12px; font-weight: bold; border: none; cursor: pointer; font-size: 16px; margin-bottom: 10px; }
-        .btn-down { background: #38bdf8; color: white; width: 100%; padding: 12px; border-radius: 12px; border: none; cursor: pointer; display: none; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your website description goes here">
+    <meta name="keywords" content="Keyword1, Keyword2, Keyword3">
+    <meta name="author" content="Your Name">
+    <meta property="og:title" content="Your Webpage Title">
+    <meta property="og:description" content="Your webpage description for Open Graph">
+    <meta property="og:url" content="https://amit1886868-hue.github.io/Ai-Media-/">
+    <meta property="og:image" content="URL to any image that represents your site">
+    <title>Your Webpage Title</title>
 </head>
 <body>
-
-<div class="container">
-    <h1>Ai Media</h1>
-    <p style="color: #94a3b8;">Hindi Premium AI Voices</p>
-    
-    <textarea id="textInput" placeholder="Yahan Hindi mein likhiye..."></textarea>
-
-    <div class="voice-grid" id="voiceGrid"></div>
-    
-    <button class="btn-main" onclick="generateNow()">Generate & Play</button>
-    <button id="downBtn" class="btn-down" onclick="downloadNow()">📥 Download MP3</button>
-</div>
-
-<script>
-    const synth = window.speechSynthesis;
-    const voiceGrid = document.getElementById('voiceGrid');
-    let selectedVoiceIndex = 0;
-
-    // 10 Hindi Specialized Characters
-    const characters = [
-        { name: "Sagar", desc: "Male - Deep", pitch: 0.8, rate: 0.9 },
-        { name: "Kavita", desc: "Female - Soft", pitch: 1.2, rate: 1.0 },
-        { name: "Aarav", desc: "Male - News", pitch: 1.0, rate: 1.1 },
-        { name: "Ananya", desc: "Female - Sweet", pitch: 1.4, rate: 0.9 },
-        { name: "Rohan", desc: "Male - Angry", pitch: 0.6, rate: 1.2 },
-        { name: "Ishani", desc: "Female - Story", pitch: 1.1, rate: 0.8 },
-        { name: "Vijay", desc: "Male - Old", pitch: 0.7, rate: 0.8 },
-        { name: "Meera", desc: "Female - Young", pitch: 1.5, rate: 1.1 },
-        { name: "Rahul", desc: "Male - Calm", pitch: 0.9, rate: 1.0 },
-        { name: "Priya", desc: "Female - Sharp", pitch: 1.3, rate: 1.2 }
-    ];
-
-    characters.forEach((char, i) => {
-        const div = document.createElement('div');
-        div.className = `voice-card ${i === 0 ? 'active' : ''}`;
-        div.innerHTML = `<strong>${char.name}</strong><br><small>${char.desc}</small>`;
-        
-        div.onclick = () => {
-            selectedVoiceIndex = i;
-            document.querySelectorAll('.voice-card').forEach(c => c.classList.remove('active'));
-            div.classList.add('active');
-            playDemo(char); // Click karne par demo bajega
-        };
-        voiceGrid.appendChild(div);
-    });
-
-    function playDemo(char) {
-        synth.cancel();
-        const demo = new SpeechSynthesisUtterance(`Namaste, main ${char.name} hoon. Main ek AI voice hoon.`);
-        demo.lang = 'hi-IN'; // Hindi Language Set
-        demo.pitch = char.pitch;
-        demo.rate = char.rate;
-        synth.speak(demo);
-    }
-
-    function generateNow() {
-        const text = document.getElementById('textInput').value;
-        if(!text) return alert("Pehle text likho!");
-
-        synth.cancel();
-        const utter = new SpeechSynthesisUtterance(text);
-        const char = characters[selectedVoiceIndex];
-        
-        utter.lang = 'hi-IN'; 
-        utter.pitch = char.pitch;
-        utter.rate = char.rate;
-
-        synth.speak(utter);
-        document.getElementById('downBtn').style.display = 'block';
-    }
-
-    function downloadNow() {
-        const text = document.getElementById('textInput').value;
-        const blob = new Blob([text], { type: 'audio/mp3' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `Ai-Media-${characters[selectedVoiceIndex].name}.mp3`;
-        a.click();
-        alert("Audio processing complete! File saved.");
-    }
-</script>
+    <!-- Your body content goes here -->
 </body>
 </html>
