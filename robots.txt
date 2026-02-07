@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://amit1886868-hue.github.io/Ai-Media-/sitemap.xml
